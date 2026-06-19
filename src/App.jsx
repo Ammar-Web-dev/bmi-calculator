@@ -3,8 +3,8 @@ import { useState } from "react";
 function App() {
   const [height, setHeight] = useState(0);
   const [weight, setWeight] = useState(0);
-  const [bmi, setBmi] = useState("");
-  const [category, setCategory] = useState("");
+  const [bmi, setBmi] = useState(0);
+  const [category, setCategory] = useState(0);
 
   function calculatebmi(e) {
     e.preventDefault();
@@ -23,8 +23,8 @@ function App() {
       category = "Obese";
     }
 
-    setCategory(category);
-  }
+    setBmi(bmiValue.toFixed(2));
+    setCategory(category);  }
 
   return (
     <div>
@@ -34,19 +34,19 @@ function App() {
         <input
           type="number"
           placeholder="Enter weight"
-          onChange={(e) => setWeight(Number(e.target.value))}
+          onChange={(e) => setWeight(e.target.value)}
         />
 
         <input
           type="number"
           placeholder="Enter height (cm)"
-          onChange={(e) => setHeight(Number(e.target.value))}
+          onChange={(e) => setHeight(e.target.value)}
         />
 
         <button type="submit">Submit</button>
       </form>
 
-      <h2>BMI: {bmi}</h2>
+      <h2>BMI:{bmi}</h2>
       <h2>Category: {category}</h2>
     </div>
   );
